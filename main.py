@@ -35,6 +35,8 @@ def main() -> None:
         )
     if LINE != LINE.strip() or "\n" in LINE or "\r" in LINE:
         raise SystemExit("line must be a single line with no edge whitespace")
+    if not LINE.isascii():
+        raise SystemExit("line must be plain ASCII so it reads identically everywhere")
 
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     path = os.path.join(out_dir, "entry.txt")
